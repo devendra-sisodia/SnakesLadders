@@ -1,0 +1,5 @@
+Player1 rolled a 3 did not move
+Player1 rolled a 5 did not move
+Player1 enters the board with a 6
+Player1 rolls 2 and moves to 2
+Player1 rolls 4 and moves to 6
