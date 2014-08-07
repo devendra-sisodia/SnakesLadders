@@ -90,10 +90,44 @@ public class Game {
 		board = new int[MAX_POSITION + 1];
 		for(int i = 0; i < MAX_POSITION + 1; i++)
 			board[i] = i; 
-		loadSnakes(snakesFile);
+		
 		loadLadders(laddersFile);
+		loadSnakes(snakesFile);
+		updateMultipleMovements(laddersFile, snakesFile);
 	}
 
+	private void updateMultipleMovements(String laddersFile, String snakesFile) throws IOException
+	{
+		BufferedReader sReader = new BufferedReader(new FileReader(laddersFile));
+
+		String sline = null;
+		String lline = null;
+		while ((sline = sReader.readLine()) != null) {
+			BufferedReader lReader = new BufferedReader(new FileReader(snakesFile));
+			while ((lline = lReader.readLine()) != null) {
+				
+				int sStart = Integer.parseInt(sline.split(" ")[0]);
+				int sEnd = Integer.parseInt(sline.split(" ")[1]);
+				int lStart = Integer.parseInt(lline.split(" ")[0]);
+				int lEnd = Integer.parseInt(lline.split(" ")[1]);
+				
+				if(sStart == lEnd)
+				{
+					board[lStart] = sEnd;
+				}
+				else if(lStart == sEnd)
+				{
+					board[sStart] = lEnd; 	
+				}
+				
+			}
+			lReader.close();
+		}
+		sReader.close();
+		
+		
+	}
+	
 	private void loadSnakes(String filename) throws NumberFormatException,
 			IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(filename));
