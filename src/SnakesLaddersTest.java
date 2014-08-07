@@ -12,7 +12,7 @@ import org.junit.Test;
 
 /**
  * 
- * @author Oshin
+ * @author Devendra-Akhila-Krupa-Abirami
  *
  */
 public class SnakesLaddersTest {
